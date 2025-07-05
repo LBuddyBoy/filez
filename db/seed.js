@@ -17,16 +17,19 @@ async function seed() {
   await createFile("Test3.txt", 100, 1);
   await createFile("Test4.txt", 100, 1);
   await createFile("Test5.txt", 100, 1);
+  await createFile("Test6.txt", 100, 1);
 
   await createFile("Test1.png", 100, 2);
   await createFile("Test2.png", 100, 2);
   await createFile("Test3.png", 100, 2);
   await createFile("Test4.png", 100, 2);
   await createFile("Test5.png", 100, 2);
+  await createFile("Test6.png", 100, 2);
 
   await createFile("Test1.jar", 100, 3);
   await createFile("Test2.jar", 100, 3);
   await createFile("Test3.jar", 100, 3);
   await createFile("Test4.jar", 100, 3);
   await createFile("Test5.jar", 100, 3);
+  await createFile("Test6.jar", 100, 3);
 }

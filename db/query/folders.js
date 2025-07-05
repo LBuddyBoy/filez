@@ -14,13 +14,18 @@ export async function createFolder(name) {
 
 export async function getFolderById(id) {
     const sql = `
-    SELECT * FROM folders
-    WHERE id = $1
+    SELECT folders.*, json_agg(files) AS files
+    FROM folders
+    LEFT JOIN files ON files.folder_id = folders.id
+    WHERE folders.id = $1
+    GROUP BY folders.id
     `;
 
-    const { rows: [folder]} = await db.query(sql, [id]);
+    const { rows } = await db.query(sql, [id]);
 
-    return folder;
+    console.log(rows);
+
+    return rows[0];
 }
 
 export async function getFolders() {

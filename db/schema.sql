@@ -4,15 +4,18 @@ CREATE DATABASE filez;
 
 \c filez;
 
+DROP TABLE IF EXISTS files;
+DROP TABLE IF EXISTS folders;
+
 CREATE TABLE folders(
-    id SERIAL PRIMARY KEY,
-    name TEXT not null    
+    id SERIAL PRIMARY KEY NOT NULL,
+    name TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE files(
-    id SERIAL PRIMARY KEY,
-    name TEXT not null,
-    size INTEGER,
-    folder_id INTEGER REFERENCES folders(id) ON DELETE CASCADE
+    id SERIAL PRIMARY KEY NOT NULL,
+    name TEXT UNIQUE NOT NULL,
+    size INTEGER NOT NULL,
+    folder_id INTEGER REFERENCES folders(id) ON DELETE CASCADE NOT NULL
 );
 
